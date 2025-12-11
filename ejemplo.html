@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Mundo de las IAs</title>
+    
+    <style>
+       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-areas: 
+                "header header"
+                "nav nav"
+                "aside main"
+                "footer footer";
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: auto auto 1fr auto;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+    
+        header {
+            grid-area: header;
+            background: linear-gradient(135deg, #1a2a6c 0%, #2a3a7c 100%);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .header-image {
+            width: 100px;
+            height: 100px;
+            margin-right: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-image svg {
+            width: 70px;
+            height: 70px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+        
+        .header-text {
+            flex: 1;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        
+        nav {
+            grid-area: nav;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 15px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: space-around;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a:hover {
+            background-color: #1a2a6c;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        nav a::after {
+            font-size: 0.8rem;
+            margin-left: 5px;
+            opacity: 0.7;
+        }
+        
+        aside {
+            grid-area: aside;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+        }
+        
+        aside h2 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        aside ul {
+            list-style: none;
+        }
+        
+        aside li {
+            margin-bottom: 15px;
+        }
+        
+        aside a {
+            text-decoration: none;
+            color: #555;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        aside a:hover, aside a.active {
+            background-color: #f0f5ff;
+            color: #1a2a6c;
+            font-weight: 500;
+        }
+        
+        aside a::before {
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+        
+        
+        main {
+            grid-area: main;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+        }
+        
+        .ia-content {
+            display: none;
+        }
+        
+        .ia-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        main h2 {
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .ia-info {
+            margin-top: 20px;
+        }
+        
+        .ia-info h3 {
+            color: #2a3a7c;
+            margin: 20px 0 10px;
+        }
+        
+        .ia-info ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .ia-info li {
+            margin-bottom: 8px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background-color: #f0f5ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #1a2a6c;
+        }
+        
+        .feature-card h4 {
+            color: #1a2a6c;
+            margin-bottom: 8px;
+        }
+        
+        .external-link {
+            display: inline-block;
+            background-color: #1a2a6c;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+        
+        .external-link:hover {
+            background-color: #2a3a7c;
+        }
+        
+       
+        footer {
+            grid-area: footer;
+            background: linear-gradient(135deg, #1a2a6c 0%, #2a3a7c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-areas: 
+                    "header"
+                    "nav"
+                    "main"
+                    "aside"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr auto auto;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-image {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin-bottom: 10px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+        } 
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-image">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#4a6ee0" />
+                                <stop offset="100%" stop-color="#8a2be2" />
+                            </linearGradient>
+                            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        
+                    
+                        <path d="M30,40 Q40,25 50,30 Q60,25 70,40 Q75,50 70,60 Q60,75 50,70 Q40,75 30,60 Q25,50 30,40 Z" 
+                              fill="url(#brainGradient)" stroke="#fff" stroke-width="1.5" filter="url(#glow)"/>
+                        
+                       
+                        <path d="M35,35 Q40,30 45,35" stroke="#fff" stroke-width="1" fill="none"/>
+                        <path d="M55,35 Q60,30 65,35" stroke="#fff" stroke-width="1" fill="none"/>
+                        <path d="M40,45 Q45,40 50,45" stroke="#fff" stroke-width="1" fill="none"/>
+                        <path d="M50,45 Q55,40 60,45" stroke="#fff" stroke-width="1" fill="none"/>
+                        <path d="M35,55 Q40,50 45,55" stroke="#fff" stroke-width="1" fill="none"/>
+                        <path d="M55,55 Q60,50 65,55" stroke="#fff" stroke-width="1" fill="none"/>
+                        
+                        <circle cx="25" cy="35" r="1.5" fill="#00ffff" opacity="0.8"/>
+                        <circle cx="75" cy="45" r="1.5" fill="#00ffff" opacity="0.8"/>
+                        <circle cx="30" cy="65" r="1.5" fill="#00ffff" opacity="0.8"/>
+                        <circle cx="70" cy="55" r="1.5" fill="#00ffff" opacity="0.8"/>
+                        <circle cx="45" cy="25" r="1.5" fill="#00ffff" opacity="0.8"/>
+                        <circle cx="55" cy="75" r="1.5" fill="#00ffff" opacity="0.8"/>
+                   
+                        <rect x="38" y="38" width="4" height="4" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        <rect x="58" y="38" width="4" height="4" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        <rect x="48" y="48" width="4" height="4" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        <rect x="38" y="58" width="4" height="4" fill="none" stroke="#fff" stroke-width="0.8"/>
+                        <rect x="58" y="58" width="4" height="4" fill="none" stroke="#fff" stroke-width="0.8"/>
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h1>El Mundo de las IAs</h1>
+                    <p>Explorando el futuro de la inteligencia artificial</p>
+                </div>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="https://chat.openai.com" target="_blank">ChatGPT</a></li>
+                <li><a href="https://www.deepseek.com" target="_blank">DeepSeek</a></li>
+                <li><a href="https://qwenlm.github.io" target="_blank">Qwen</a></li>
+                <li><a href="https://gemini.google.com" target="_blank">Gemini</a></li>
+            </ul>
+        </nav>
+        
+        <aside>
+            <h2>Modelos de IA</h2>
+            <ul>
+                <li><a href="#" class="aside-link active" data-ia="chatgpt">ChatGPT</a></li>
+                <li><a href="#" class="aside-link" data-ia="deepseek">DeepSeek</a></li>
+                <li><a href="#" class="aside-link" data-ia="qwen">Qwen</a></li>
+                <li><a href="#" class="aside-link" data-ia="gemini">Gemini</a></li>
+            </ul>
+        </aside>
+        
+        <main>
+            
+            <div id="chatgpt" class="ia-content active">
+                <h2>ChatGPT</h2>
+                <p>ChatGPT es un modelo de lenguaje desarrollado por OpenAI, basado en la arquitectura GPT (Generative Pre-trained Transformer). Es uno de los asistentes de IA más populares y versátiles.</p>
+                
+                <div class="ia-info">
+                    <h3>Características principales</h3>
+                    <div class="feature-list">
+                        <div class="feature-card">
+                            <h4>Capacidades de Conversación</h4>
+                            <p>Mantiene conversaciones naturales y contextuales</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Multipropósito</h4>
+                            <p>Asiste en escritura, programación, análisis y más</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Actualizaciones Constantes</h4>
+                            <p>Mejora continua con nuevas versiones</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Interfaz amigable y fácil de usar</li>
+                        <li>Amplia gama de conocimientos</li>
+                        <li>Capacidad de seguir el contexto de conversación</li>
+                        <li>Disponible en múltiples plataformas</li>
+                    </ul>
+                    
+                    <h3>Desarrollador</h3>
+                    <p>OpenAI - Empresa líder en investigación de inteligencia artificial</p>
+                    
+                    <a href="https://chat.openai.com" target="_blank" class="external-link">Visitar ChatGPT ↗</a>
+                </div>
+            </div>
+          
+            <div id="deepseek" class="ia-content">
+                <h2>DeepSeek</h2>
+                <p>DeepSeek es un modelo de IA desarrollado por la empresa china DeepSeek AI, conocido por su excelente rendimiento en tareas de razonamiento y programación.</p>
+                
+                <div class="ia-info">
+                    <h3>Características principales</h3>
+                    <div class="feature-list">
+                        <div class="feature-card">
+                            <h4>Enfoque en Programación</h4>
+                            <p>Especializado en asistencia para desarrollo de software</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Razonamiento Matemático</h4>
+                            <p>Excelente capacidad para resolver problemas complejos</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Acceso Gratuito</h4>
+                            <p>Disponible sin coste para usuarios</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Gratuito y de código abierto</li>
+                        <li>Especializado en programación y matemáticas</li>
+                        <li>Contexto extenso de 128K tokens</li>
+                        <li>Buen rendimiento en benchmarks</li>
+                    </ul>
+                    
+                    <h3>Desarrollador</h3>
+                    <p>DeepSeek AI - Compañía china especializada en modelos de lenguaje</p>
+                    
+                    <a href="https://www.deepseek.com" target="_blank" class="external-link">Visitar DeepSeek ↗</a>
+                </div>
+            </div>
+            
+            
+            <div id="qwen" class="ia-content">
+                <h2>Qwen</h2>
+                <p>Qwen (Quewen) es una serie de modelos de lenguaje grande desarrollados por Alibaba Group, que incluye versiones para diferentes aplicaciones y tamaños.</p>
+                
+                <div class="ia-info">
+                    <h3>Características principales</h3>
+                    <div class="feature-list">
+                        <div class="feature-card">
+                            <h4>Multilingüe</h4>
+                            <p>Especialmente fuerte en chino e inglés</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Diferentes Variantes</h4>
+                            <p>Incluye Qwen-Chat, Qwen-Coder, Qwen-Math</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Integración con Herramientas</h4>
+                            <p>Capacidad de usar herramientas externas</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Excelente rendimiento en chino</li>
+                        <li>Modelos especializados para diferentes tareas</li>
+                        <li>Contexto largo (hasta 32K tokens)</li>
+                        <li>Completamente de código abierto</li>
+                    </ul>
+                    
+                    <h3>Desarrollador</h3>
+                    <p>Alibaba Group - Una de las mayores empresas tecnológicas de China</p>
+                    
+                    <a href="https://qwenlm.github.io" target="_blank" class="external-link">Visitar Qwen </a>
+                </div>
+            </div>
+            
+            <div id="gemini" class="ia-content">
+                <h2>Gemini</h2>
+                <p>Gemini es la familia de modelos de IA multimodal desarrollada por Google, diseñada para entender y procesar simultáneamente texto, imágenes, audio y más.</p>
+                
+                <div class="ia-info">
+                    <h3>Características principales</h3>
+                    <div class="feature-list">
+                        <div class="feature-card">
+                            <h4>Multimodalidad Nativa</h4>
+                            <p>Diseñado desde el inicio para ser multimodal</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Diferentes Tamaños</h4>
+                            <p>Gemini Ultra, Pro y Nano para distintos usos</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4>Integración con Google</h4>
+                            <p>Conectado con los servicios de Google</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Verdaderamente multimodal</li>
+                        <li>Excelente rendimiento en razonamiento</li>
+                        <li>Integrado con el ecosistema Google</li>
+                        <li>Optimizado para diferentes dispositivos</li>
+                    </ul>
+                    
+                    <h3>Desarrollador</h3>
+                    <p>Google - Líder mundial en tecnología y servicios en línea</p>
+                    
+                    <a href="https://gemini.google.com" target="_blank" class="external-link">Visitar Gemini ↗</a>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="copyright">
+                    <p>&copy; 2023 El Mundo de las IAs. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Uso</a>
+                    <a href="#">Mapa del Sitio</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const asideLinks = document.querySelectorAll('.aside-link');
+            const iaContents = document.querySelectorAll('.ia-content');
+            
+          
+            function setActiveIA(iaName) {
+                
+                iaContents.forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                
+                const activeContent = document.getElementById(iaName);
+                if (activeContent) {
+                    activeContent.classList.add('active');
+                }
+                
+                asideLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-ia') === iaName) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            
+            asideLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const iaName = this.getAttribute('data-ia');
+                    setActiveIA(iaName);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

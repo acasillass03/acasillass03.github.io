@@ -1,0 +1,108 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #00aeff;
+        }
+        
+        .formulario {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.986);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .campo {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #000000;
+            font-weight: bold;
+        }
+        
+        .obligatorio {
+            color: rgb(255, 0, 0);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #03a3ff;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        
+        .genero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .genero-opcion {
+            display: flex;
+            align-items: center;
+        }
+        
+        .genero-opcion input {
+            margin-right: 5px;
+        }
+        
+        .botones {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .limpiar {
+            background: #ddd;
+            color: #000000;
+        }
+        
+        .enviar {
+            background: #007bff;
+            color: white;
+        }
+        
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .linea {
+            height: 1px;
+            background: #eee;
+            margin: 20px 0;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        

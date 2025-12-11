@@ -1,0 +1,15 @@
+body {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      color: black;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #eee;
+    }

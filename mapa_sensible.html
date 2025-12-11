@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mapa Sensible</title>
+  <meta name="Author" content="Alberto">
+  <meta name="Description" content="Mapa Sensible">
+  <meta name="Keywords" content="Mapa,Sensible,España,Portugal,Francia">
+  <link rel="shortcut icon" href="imagen/favicon.jpg"  type="image/x-icon">
+
+  <style>
+    body {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      color: black;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mapa Sensible</h1>
+
+  <!-- Imagen de España y Portugal y Francia -->
+  <img 
+    src="img/spain_prov.jpg" 
+    alt="Mapa de España,Portugal y Francia"
+    usemap="#mapa-paises"
+
+  />
+
+  <map name="mapa-paises">
+    <!-- ESPAÑA -->
+    <area 
+      shape="rect" 
+      coords="375.8,51.8,608.6,524.7" 
+      href="https://www.rfef.es/" 
+      alt="España"
+      target="_blank"
+    />
+
+    <!-- PORTUGAL -->
+    <area 
+      shape="rect" 
+      coords="251.6,153.3,510.2,493.7" 
+      href="https://www.fpf.pt/" 
+      alt="Portugal"
+      target="_blank"
+    />
+
+    <!-- PORTUGAL -->
+     <area 
+      shape="circle" 
+      coords="750,52,100" 
+      href="https://www.fff.fr/" 
+      alt="Francia"
+      target="_blank"
+    />
+
+  </map>
+   <!-- Imagen Mallorca-->
+  <img 
+    src="img/descarga.png" 
+    alt="Mapa de Mallorca"
+    usemap="#mapa-mallorca"
+   />
+   <map name="mapa-mallorca">
+    <area 
+      shape="poly" 
+      coords="20.5,88.6,48.9,127.1,76.9,105.7,120.6,162.9,154.4,185.7,239.7,74.8,192.8,38.9,192.5,14.9" 
+      href="https://www.rcdmallorca.es/jugadores" 
+      alt="Mallorca">
+    </map>
+
+</body>
+</html>

@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio DHCP - Información Completa</title>
+    
+    <style> 
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            color: #2a5298;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        h3 {
+            color: #1e3c72;
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .intro {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .icon {
+            font-size: 1.5rem;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 2rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            display: flex;
+            gap: 1rem;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .step-number {
+            background-color: #2a5298;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        th {
+            background-color: #2a5298;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        footer {
+            background-color: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Servicio DHCP</h1>
+            <p>Protocolo de Configuración Dinámica de Host</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <h2>¿Qué es DHCP?</h2>
+            <p>El Protocolo de Configuración Dinámica de Host (DHCP, por sus siglas en inglés) es un protocolo de red que permite a los dispositivos en una red IP obtener automáticamente sus parámetros de configuración. Esto incluye direcciones IP, máscaras de subred, puertas de enlace predeterminadas y servidores DNS.</p>
+            <p>DHCP elimina la necesidad de configurar manualmente cada dispositivo en la red, lo que simplifica enormemente la administración de redes, especialmente en entornos con muchos dispositivos.</p>
+        </section>
+        
+        <section>
+            <h2>Ventajas del DHCP</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3><span class="icon">⚙️</span> Configuración Automática</h3>
+                    <p>Los dispositivos se configuran automáticamente al conectarse a la red, sin necesidad de intervención manual.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🔧</span> Administración Centralizada</h3>
+                    <p>Toda la configuración de red se gestiona desde un servidor central, facilitando los cambios y el mantenimiento.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🔄</span> Reutilización de Direcciones</h3>
+                    <p>Las direcciones IP se asignan dinámicamente y se reutilizan cuando los dispositivos se desconectan.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🚫</span> Prevención de Conflictos</h3>
+                    <p>DHCP evita conflictos de direcciones IP al gestionar centralmente las asignaciones.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <h2>Video Explicativo sobre DHCP</h2>
+            <div class="video-container">
+            <a href="https://www.youtube.com/watch?v=K07wzpcKrsk"> Haz click aqui para ver el video: <br>   
+         </a>
+        </div>
+            <p>Este video explica de forma clara y detallada cómo funciona el protocolo DHCP, el proceso DORA y su implementación en redes.</p>
+        </section>
+        
+        <section>
+            <h2>Proceso DORA de DHCP</h2>
+            <p>El proceso mediante el cual un cliente obtiene una dirección IP de un servidor DHCP se conoce como DORA, que representa los cuatro pasos principales:</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div>
+                        <h3>Discover (Descubrimiento)</h3>
+                        <p>El cliente envía un paquete de difusión DHCPDISCOVER para localizar servidores DHCP disponibles.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div>
+                        <h3>Offer (Oferta)</h3>
+                        <p>Los servidores DHCP responden con paquetes DHCPOFFER que contienen una dirección IP disponible y otros parámetros de configuración.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div>
+                        <h3>Request (Solicitud)</h3>
+                        <p>El cliente selecciona una oferta y envía un paquete DHCPREQUEST para solicitar formalmente la dirección IP.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div>
+                        <h3>Acknowledgment (Reconocimiento)</h3>
+                        <p>El servidor confirma la asignación con un paquete DHCPACK, completando el proceso de concesión.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <h3>Diagrama del proceso DORA</h3>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgODAwIDQwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNmNWY3ZmEiLz48dGV4dCB4PSI0MDAiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiMxZTNjNzIiPkRpYWdyYW1hIGRlbCBQcm9jZXNvIERPUkEgZGVsIERIQ1A8L3RleHQ+PHJlY3QgeD0iMTAwIiB5PSIxMDAiIHdpZHRoPSIxNTAiIGhlaWdodD0iNjAiIGZpbGw9IiM0Yzg3ZDAiIHN0cm9rZT0iIzFiNWFiNCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMTc1IiB5PSIxMzUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0id2hpdGUiPkNsaWVudGUgREhDUDwvdGV4dD48cmVjdCB4PSI1NTAiIHk9IjEwMCIgd2lkdGg9IjE1MCIgaGVpZ2h0PSI2MCIgZmlsbD0iIzRjODdkMCIgc3Ryb2tlPSIjMWI1YWI0IiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI2MjUiIHk9IjEzNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSJ3aGl0ZSI+U2Vydmlkb3IgREhDUDwvdGV4dD48cGF0aCBkPSJNIDI1MCAxMzAgTCA0MDAgMTMwIEwgNDAwIDE3MCBMIDI1MCAxNzAgWiIgZmlsbD0iI2U5ZWNlZiIgc3Ryb2tlPSIjY2NjIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSIzMjUiIHk9IjE1MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjM2YzcyIj5ESENQRElTQ09WRVI8L3RleHQ+PHBhdGggZD0iTSA0MDAgMTMwIEwgNTUwIDEzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz48cG9seWdvbiBwb2ludHM9IjU1MCwxMzAgNTQwLDEyNSA1NDAsMTM1IiBmaWxsPSIjMzMzIi8+PHBhdGggZD0iTSA1NTAgMTcwIEwgNDAwIDE3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz48cG9seWdvbiBwb2ludHM9IjQwMCwxNzAgNDEwLDE2NSA0MTAsMTc1IiBmaWxsPSIjMzMzIi8+PHBhdGggZD0iTSAyNTAgMjEwIEwgNDAwIDIxMCBMIDQwMCAyNTAgTCAyNTAgMjUwIFoiIGZpbGw9IiNlOWVjZWYiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMzI1IiB5PSIyMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzYzNmM3MiI+REhDUE9GRkVSPC90ZXh0PjxwYXRoIGQ9Ik0gNDAwIDIxMCBMIDU1MCAyMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBvbHlnb24gcG9pbnRzPSI1NTAsMjEwIDU0MCwyMDUgNTQwLDIxNSIgZmlsbD0iIzMzMyIvPjxwYXRoIGQ9Ik0gNTUwIDI1MCBMIDQwMCAyNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBvbHlnb24gcG9pbnRzPSI0MDAsMjUwIDQxMCwyNDUgNDEwLDI1NSIgZmlsbD0iIzMzMyIvPjxwYXRoIGQ9Ik0gMjUwIDI5MCBMIDQwMCAyOTAgTCA0MDAgMzMwIEwgMjUwIDMzMCBaIiBmaWxsPSIjZTllY2VmIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjMyNSIgeT0iMzEwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2MzZjNzIiPkRIQ1BSRVFVRVNUPC90ZXh0PjxwYXRoIGQ9Ik0gNDAwIDI5MCBMIDU1MCAyOTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBvbHlnb24gcG9pbnRzPSI1NTAsMjkwIDU0MCwyODUgNTQwLDI5NSIgZmlsbD0iIzMzMyIvPjxwYXRoIGQ9Ik0gNTUwIDMzMCBMIDQwMCAzMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBvbHlnb24gcG9pbnRzPSI0MDAsMzMwIDQxMCwzMjUgNDEwLDMzNSIgZmlsbD0iIzMzMyIvPjxwYXRoIGQ9Ik0gMjUwIDM3MCBMIDQwMCAzNzAgTCA0MDAgNDEwIEwgMjUwIDQxMCBaIiBmaWxsPSIjZTllY2VmIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjMyNSIgeT0iMzkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2MzZjNzIiPkRIQ1BBQ0s8L3RleHQ+PHBhdGggZD0iTSA0MDAgMzcwIEwgNTUwIDM3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz48cG9seWdvbiBwb2ludHM9IjU1MCwzNzAgNTQwLDM2NSA1NDAsMzc1IiBmaWxsPSIjMzMzIi8+PHBhdGggZD0iTSA1NTAgNDEwIEwgNDAwIDQxMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjIiLz48cG9seWdvbiBwb2ludHM9IjQwMCw0MTAgNDEwLDQwNSA0MTAsNDE1IiBmaWxsPSIjMzMzIi8+PHRleHQgeD0iMTc1IiB5PSI0MzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzYzNmM3MiI+MS4gRGlzY292ZXI8L3RleHQ+PHRleHQgeD0iMTc1IiB5PSI0NTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzYzNmM3MiI+Mi4gT2ZmZXI8L3RleHQ+PHRleHQgeD0iMTc1IiB5PSI0NzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzYzNmM3MiI+My4gUmVxdWVzdDwvdGV4dD48dGV4dCB4PSIxNzUiIHk9IjQ5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjNjM2YzcyIj40LiBBY2tub3dsZWRnZTwvdGV4dD48L3N2Zz4=" alt="Diagrama del proceso DORA de DHCP">
+            </div>
+        </section>
+        
+        <section>
+            <h2>Componentes de DHCP</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cliente DHCP</td>
+                        <td>Dispositivo que solicita parámetros de configuración IP a un servidor DHCP.</td>
+                    </tr>
+                    <tr>
+                        <td>Servidor DHCP</td>
+                        <td>Servidor que responde a las solicitudes de los clientes y asigna direcciones IP.</td>
+                    </tr>
+                    <tr>
+                        <td>Agente de retransmisión DHCP</td>
+                        <td>Dispositivo que reenvía mensajes DHCP entre clientes y servidores en diferentes subredes.</td>
+                    </tr>
+                    <tr>
+                        <td>Ámbito (Scope)</td>
+                        <td>Rango de direcciones IP que un servidor DHCP puede asignar a los clientes.</td>
+                    </tr>
+                    <tr>
+                        <td>Concesión (Lease)</td>
+                        <td>Período de tiempo durante el cual un cliente puede usar una dirección IP asignada.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section>
+            <h2>Configuración de DHCP en Diferentes Entornos</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3><span class="icon">🏠</span> Redes Domésticas</h3>
+                    <p>En routers domésticos, DHCP suele estar habilitado por defecto con un ámbito de direcciones privadas (como 192.168.1.100-199).</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🏢</span> Redes Empresariales</h3>
+                    <p>En entornos corporativos, se utilizan servidores DHCP dedicados con ámbitos más grandes y configuraciones avanzadas como reservas y opciones personalizadas.</p>
+                </div>
+            </div>
+            
+            <div class="image-container">
+                <h3>Ejemplo de configuración de DHCP en un router</h3>
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MDAiIGhlaWdodD0iNDAwIiB2aWV3Qm94PSIwIDAgODAwIDQwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0MDAiIGZpbGw9IiNmNWY3ZmEiLz48dGV4dCB4PSI0MDAiIHk9IjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiMxZTNjNzIiPkNvbmZpZ3VyYWNpw7NuIGRlIERIQ1AgZW4gVUkgZGUgUm91dGVyPC90ZXh0PjxyZWN0IHg9IjEwMCIgeT0iMTAwIiB3aWR0aD0iNjAwIiBoZWlnaHQ9IjI1MCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMTEwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzFjNzdiZiI+Q29uZmlndXJhY2nDs24gREhDUCAoU2Vydmlkb3IgREhDUCk8L3RleHQ+PHJlY3QgeD0iMTIwIiB5PSIxNjAiIHdpZHRoPSI1NjAiIGhlaWdodD0iMTgwIiBmaWxsPSIjZjhmOWZhIiBzdHJva2U9IiNkZGQiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjEzMCIgeT0iMTkwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzMzMiPkVzdGFkbyBkZWwgU2Vydmlkb3IgREhDUDo8L3RleHQ+PHRleHQgeD0iNDUwIiB5PSIxOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzFjNzdiZiI+SGFiaWxpdGFkbzwvdGV4dD48dGV4dCB4PSIxMzAiIHk9IjIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMzMzIj5EaXJlY2Npw7NuIElQIGRlIGNvbWllbnpvOjwvdGV4dD48dGV4dCB4PSI0NTAiIHk9IjIyMCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMWM3N2JmIj4xOTIuMTY4LjEuMTAwPC90ZXh0Pjx0ZXh0IHg9IjEzMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzMzMiPkRpcmVjY2nDs24gSVAgZGUgZmluYWw6PC90ZXh0Pjx0ZXh0IHg9IjQ1MCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMxYzc3YmYiPjE5Mi4xNjguMS4yMDA8L3RleHQ+PHRleHQgeD0iMTMwIiB5PSIyODAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzMzMyI+TcOhc2NhcmEgZGUgc3VyZWRlOjwvdGV4dD48dGV4dCB4PSI0NTAiIHk9IjI4MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiBmaWxsPSIjMWM3N2JmIj4yNTUuMjU1LjI1NS4wPC90ZXh0Pjx0ZXh0IHg9IjEzMCIgeT0iMzEwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMzMzMiPlB1ZXJ0YSBkZSBlbmxhY2U6PC90ZXh0Pjx0ZXh0IHg9IjQ1MCIgeT0iMzEwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiMxYzc3YmYiPjE5Mi4xNjguMS4xPC90ZXh0Pjwvc3ZnPg==" alt="Configuración de DHCP en router">
+            </div>
+        </section>
+        
+        <section>
+            <h2>Más Videos sobre DHCP</h2>
+            <div class="content-grid">
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=0T2eA-01w9Y">Haz click aqui para ver
+                    video: <br>
+                    </a>
+                </div>
+                <div class="video-container">
+                    <a href="https://www.youtube.com/watch?v=l6xt-tzO748">Haz click aqui para ver video: 
+                    </a>
+                </div>
+            </div>
+            <p>Estos videos adicionales ofrecen tutoriales prácticos sobre cómo configurar DHCP en diferentes sistemas y resolver problemas comunes.</p>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Información sobre el Servicio DHCP</p>
+            <p>Esta página contiene una explicación completa del protocolo DHCP con ejemplos visuales</p>
+        </div>
+    </footer>
+</body>
+</html>

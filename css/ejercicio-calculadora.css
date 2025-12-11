@@ -1,0 +1,33 @@
+:root{
+      --bg:#00ff88; --panel:#000000; --accent:#fffb00; --btn:#01f7c2; --muted:#d400ff; --glass: rgba(31, 247, 2, 0.829);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{background:linear-gradient(180deg,#071029 0%, #071b2a 100%); color:#e6eef6; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px}
+
+    .calc{
+      width:340px; background:linear-gradient(180deg, rgb(31, 255, 1), rgba(255,255,255,0.01));
+      border-radius:14px; padding:18px; box-shadow:0 10px 30px rgba(2, 48, 252, 0.7);
+    }
+
+    .screen{
+      background:var(--panel); padding:14px; border-radius:10px; margin-bottom:12px; text-align:right; min-height:64px; display:flex; flex-direction:column; justify-content:center; gap:6px;
+    }
+    .expr{color:var(--muted); font-size:14px; min-height:18px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+    .result{font-size:28px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+    .keys{display:grid; grid-template-columns: repeat(4,1fr); gap:10px}
+    button{
+      background:var(--btn); border:0; padding:16px; border-radius:10px; font-size:18px; color:inherit; cursor:pointer; box-shadow:0 4px 10px rgba(2,6,23,0.6);
+      transition:transform .07s ease, box-shadow .07s ease;
+    }
+    button:active{transform:translateY(2px)}
+
+    .key-op{background:linear-gradient(180deg,var(--accent), #0891b2); color:#021018; font-weight:600}
+    .key-equals{grid-column:span 2; background:linear-gradient(180deg,#fbff01,#059669); color:white}
+    .key-wide{grid-column:span 2}
+
+    .small{font-size:14px}
+
+    @media (max-width:380px){ .calc{width:100%}
+}

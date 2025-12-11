@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio JavaScript</title>
+
+    <style>
+      .parrafo1 {
+      color: yellow;
+      font-style: oblique;
+    }
+
+    .clase-coleccion {
+      color: red;
+      background-color: pink;
+      font-size: 18px;
+    }
+    
+    /* Estilo para el elemento mark */
+    mark {
+      background-color: yellow;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+    
+    /* Estilo para botones que simulan command */
+    .command-style {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 14px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    </style>
+    
+</head>
+<body>
+  <h1>Ejercicio JavaScript</h1>
+    <p id="saludo">Hola buenos días</p>
+    <button type="button" onclick='document.getElementById("saludo").innerHTML = "Hoy hacemos ejercicios Java Script!"';> Haz click
+    </button>
+ 
+  <!--Ejercicio Emojis-->  
+  <h1>Ejercicio de Emojis</h1>
+    <img id="myImage" style="width: 75px;"> <br>
+    <button onclick="document.getElementById('myImage').src='../img/triste.jpeg'">Triste</button> <br>
+    <button onclick="document.getElementById('myImage').src='../img/sonrie.jpeg'">Contenta</button> <br>
+    <button onclick="document.getElementById('myImage').src='../img/normal.jpeg'">Normal</button>
+    
+   
+    
+  <!--Ejercicio Dia y Noche-->
+  <h1>Ejercicio Sol y Luna </h1>
+    <button onclick="document.body.style.backgroundColor = 'rgb(0, 0, 0)';
+    document.body.style.color = 'white';">
+    <img id="luna" style="width:75px;" src="../img/luna.png">
+    <button onclick="document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';">
+    <img id="sol" style="width:75px;" src="../img/sol.png">
+    </button>
+
+  <!--Ejercicio Arbol-->
+  <h1>Ejercicio Arbol</h1>
+
+    <img id="arbol" src="../img/arbolnavidad.png" alt="Arbol" style="width:100px"> <br>
+    <button type="button" onclick="document.getElementById('arbol').style.display='none'">Oculta el árbol</button> <br>
+    <button type="button" onclick="document.getElementById('arbol').style.display='block'">Muestra el árbol</button>
+    
+  <!--Elemento MARK añadido-->
+  <h2>Elemento &lt;Mark&gt;</h2>
+  <p>El elemento <mark>&lt;mark&gt;</mark> se utiliza para resaltar o marcar texto que es relevante en un contexto particular. Por ejemplo, podemos usar <mark>JavaScript</mark> para manipular elementos <mark>HTML</mark> de forma dinámica.</p>
+  
+   <!--Elemento COMMAND o alternativa-->
+  <h2>Elemento tipo Command</h2>
+  <p>El elemento <mark>&lt;command&gt;</mark> está obsoleto en HTML5.</p>
+
+  <!--Definición DOM-->
+  <h2>¿Qué es DOM?</h2>
+  <p>El DOM <mark>(siglas de Document Object Model)</mark>, o Modelo de Objetos del Documento, es una interfaz de programación para documentos HTML y XML. Representa la estructura de una página web como un árbol de objetos, permitiendo a los lenguajes de programación, como JavaScript, acceder a los elementos del documento y manipular su contenido, estructura y estilo de forma dinámica.
+  
+  <h2>¿Cómo funciona el DOM?</h2>
+  Cuando un navegador web carga una página HTML, crea internamente una representación en memoria de esa página. Esta representación es el DOM y sigue una estructura jerárquica de árbol.
+  
+  Documento: Es el nodo raíz del árbol, que representa toda la página web.
+  Elementos: Cada etiqueta HTML (como &lt;body>, &lt;h1>, &lt;div>, &lt;p>) se convierte en un objeto, o nodo, dentro del árbol.
+  Atributos: Los atributos de las etiquetas (id, class, src, etc.) también se representan como nodos.
+  Contenido de texto: El texto dentro de las etiquetas también es un nodo.
+  
+  <h2>¿Para qué sirve?</h2>
+  El DOM actúa como un puente entre la página web estática y el código de programación, permitiendo que los desarrolladores:
+  
+  Modifiquen el contenido: Actualicen textos o imágenes sin recargar la página.
+  Cambien la estructura: Añadan, eliminen o reordenen elementos HTML.
+  Alteren el estilo: Cambien las propiedades CSS para modificar la apariencia de los elementos.
+  Manejen eventos: Reaccionen a las interacciones del usuario, como clics en botones o entradas de texto.
+  
+  Ejemplo de manipulación del DOM
+  Imagina un documento HTML simple: 
+  
+  html
+  &lt;!DOCTYPE html>
+  &lt;html>
+  &lt;body>
+  &lt;h1 id="titulo">Hola, mundo &lt;/h1>
+  &lt;/body>
+  &lt;/html> 
+  
+  <h5>Usa el código con precaución.</h5>
+
+  <h4>Con JavaScript, podrías manipular este documento a través del DOM de la siguiente manera:</h4>
+  
+  <h3>JavaScript</h3>
+ 
+  <h4>// Acceder al elemento con el id "titulo"</h4>
+  const tituloElemento = document.getElementById('titulo');
+
+  <h4>// Modificar el contenido del elemento</h4>
+  tituloElemento.textContent = '¡Hola, desde JavaScript!';
+
+  <h4>// Crear un nuevo párrafo</h4>
+  const nuevoParrafo = document.createElement('p');
+  nuevoParrafo.textContent = 'Este párrafo ha sido añadido con JavaScript.';
+
+  <h4>// Añadir el nuevo párrafo al cuerpo del documento</h4>
+  document.body.appendChild(nuevoParrafo);
+  
+  <h5>Usa el código con precaución.</h5>
+
+  <h4>Este código permite modificar el contenido del &lt;h1> y añadir un nuevo &lt;p> sin necesidad de recargar la página, haciendo que el sitio web sea interactivo y dinámico.</h4>
+  </p>
+
+  <!--Definición JavaScript-->
+  <h2>¿Qué es JavaScript?</h2>
+    <p>JavaScript (JS) es un lenguaje de programación multiparadigma que se utiliza para hacer las páginas web <mark>interactivas y dinámicas</mark>. Es una de las tres tecnologías web principales junto con HTML y CSS, y se ejecuta principalmente en el navegador del cliente para crear elementos como menús desplegables, animaciones y validación de formularios. A pesar de la similitud en el nombre, es distinto del lenguaje de programación Java.</p>
+      
+  <!--getElementsByTagName: devuelve una colección de elementos, accedere a cada elemento segun la posición-->
+  <button onclick="
+
+  /*  todo sin constante
+        document.getElementsByTagName('p')[0].style.color='green';
+        document.getElementsByTagName('p')[0].style.fontSize='20px';
+        document.getElementsByTagName('p')[0].style.fontWeight='bold';/*negrita, css: font-weight: bold;
+        document.getElementsByTagName('p')[0].style.fontStyle='italic';/*cursiva, css: font-style: italic;
+  */
+        
+        /*declaro la constante  parrafo0*/
+        const parrafo0 = document.getElementsByTagName('p')[0];
+        parrafo0.style.color='green';
+        parrafo0.style.fontSize='20px'
+        parrafo0.style.fontWeight='bold'
+        parrafo0.style.fontStyle='italic'
+
+        /*aplicar estilo con una clase, aplica una clase eliminando las clases anteriores
+        document.getElementsByTagName('p')[1].className='clase-coleccion';*/
+
+        document.getElementsByTagName('p')[1].classList.add=('clase-coleccion');
+
+      ">Cambia primer parrafo
+  </button>
+                                       
+  <p id="parrafo-a-cambiar">Este es el párrafo cuyo aspecto cambiará.</p>
+
+  <button onclick="cambiarEstilosGlobales()">Cambia el aspecto de todos los párrafos</button>
+
+  <script>
+      function cambiarEstilosGlobales() {
+      // Selecciona TODOS los elementos <p> y los guarda en una lista (NodeList)
+      const parrafos = document.querySelectorAll('p');
+      
+      // Itera sobre cada elemento individualmente para aplicar los estilos
+      parrafos.forEach(parrafo => {
+      parrafo.style.color = 'blue';
+      parrafo.style.fontSize = '15px';
+      parrafo.style.fontWeight = 'bold';
+      parrafo.style.fontStyle = 'italic';});
+      }
+      
+      // Funciones para los "comandos"
+      function guardarDocumento() {
+          alert('Documento guardado exitosamente');
+          // Aquí iría la lógica real para guardar
+      }
+      
+      function imprimirDocumento() {
+          window.print();
+      }
+      
+      function copiarTodo() {
+          const contenido = document.body.innerText;
+          navigator.clipboard.writeText(contenido)
+              .then(() => alert('Contenido copiado al portapapeles'))
+              .catch(err => alert('Error al copiar: ' + err));
+      }
+      
+      // Añadir funcionalidad extra al mark
+      document.addEventListener('DOMContentLoaded', function() {
+          const marks = document.querySelectorAll('mark');
+          marks.forEach(mark => {
+              mark.addEventListener('click', function() {
+                  this.style.backgroundColor = this.style.backgroundColor === 'orange' ? 'yellow' : 'orange';
+              });
+          });
+      });
+  </script>
+
+</body>
+</html>

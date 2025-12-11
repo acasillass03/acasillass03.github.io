@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posiciones</title>
+   
+    <style>
+         *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .cuadro{
+            width: 200px;
+            height: 200px;
+        }
+
+        .arriba-izq{
+            position: relative; 
+            top: 50px;
+            background: red;
+            opacity: 69%;
+        }
+
+        .derecha{
+            position: absolute;
+            background: green;
+            left: calc(100vw - 200px);
+            opacity: 20%;
+        }
+        .pie{
+            width: 100vw;
+            height: 50px;
+            background-color: rgb(255, 238, 0);
+            margin-top: calc(100vh - 50px);
+        }
+
+        .ball{
+            position: absolute;
+            background-color: rgb(248, 0, 227);
+            width: 25vw;
+            height: 25vw;
+            opacity: 100%;
+            border-radius: 100%;
+            top: calc(50vh - 12.5vh);
+            left: calc(50vw - 12.5vw);
+            
+        }
+
+        .ball:hover{
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+            box-shadow: 10px 10px 10px 10px;
+        }
+
+        .pie:hover{
+            background-color: green;
+            width: 100vw;
+            height:50px ;
+        }
+
+        .arriba-der{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5vw;
+            height: 10vh;
+            background-color: red;
+        }
+
+        .arriba-der:hover{
+            background-color: black;
+            width: 5vw;
+            height: 10vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="cuadro arriba-izq"></div>
+    <div class="cuadro derecha"></div>
+    <div class="pie"></div>
+    <div class="ball"></div>
+    <div class="arriba-der"></div>
+</body>
+</html>

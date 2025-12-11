@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora</title>
+  <meta name="Author" content="Alberto">
+  <meta name="Description" content="Calculadora">
+  <meta name="Keywords" content="Numeros,Colores">
+  <link rel="shortcut icon" href="imagen/favicon.jpg"  type="image/x-icon">
+  
+   <style>
+  :root{
+      --bg:#00ff88; --panel:#000000; --accent:#fffb00; --btn:#01f7c2; --muted:#d400ff; --glass: rgba(31, 247, 2, 0.829);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{background:linear-gradient(180deg,#071029 0%, #071b2a 100%); color:#e6eef6; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px}
+
+    .calc{
+      width:340px; background:linear-gradient(180deg, rgb(31, 255, 1), rgba(255,255,255,0.01));
+      border-radius:14px; padding:18px; box-shadow:0 10px 30px rgba(2, 48, 252, 0.7);
+    }
+
+    .screen{
+      background:var(--panel); padding:14px; border-radius:10px; margin-bottom:12px; text-align:right; min-height:64px; display:flex; flex-direction:column; justify-content:center; gap:6px;
+    }
+    .expr{color:var(--muted); font-size:14px; min-height:18px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+    .result{font-size:28px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+
+    .keys{display:grid; grid-template-columns: repeat(4,1fr); gap:10px}
+    button{
+      background:var(--btn); border:0; padding:16px; border-radius:10px; font-size:18px; color:inherit; cursor:pointer; box-shadow:0 4px 10px rgba(2,6,23,0.6);
+      transition:transform .07s ease, box-shadow .07s ease;
+    }
+    button:active{transform:translateY(2px)}
+
+    .key-op{background:linear-gradient(180deg,var(--accent), #0891b2); color:#021018; font-weight:600}
+    .key-equals{grid-column:span 2; background:linear-gradient(180deg,#fbff01,#059669); color:white}
+    .key-wide{grid-column:span 2}
+
+    .small{font-size:14px}
+
+    @media (max-width:380px){ .calc{width:100%}
+}
+  </style>
+</head>
+<body>
+  <main class="calc" role="application" aria-label="Calculadora simple">
+    <div class="screen" aria-live="polite">
+      <div id="expr" class="expr" aria-hidden="false"></div>
+      <div id="res" class="result" aria-atomic="true">0</div>
+    </div>
+
+    <div class="keys">
+      <button id="clear" class="key-op small">C</button>
+      <button id="back" class="small">⌫</button>
+      <button data-key="%" class="small">%</button>
+      <button data-key="/" class="key-op">÷</button>
+
+      <button data-key="7">7</button>
+      <button data-key="8">8</button>
+      <button data-key="9">9</button>
+      <button data-key="*" class="key-op">×</button>
+
+      <button data-key="4">4</button>
+      <button data-key="5">5</button>
+      <button data-key="6">6</button>
+      <button data-key="-" class="key-op">−</button>
+
+      <button data-key="1">1</button>
+      <button data-key="2">2</button>
+      <button data-key="3">3</button>
+      <button data-key="+" class="key-op">+</button>
+
+      <button data-key="0" class="key-wide">0</button>
+      <button data-key="." class="small">.</button>
+      <button id="equals" class="key-equals">=</button>
+    </div>
+  </main>
+
+  <script>
+    // Calculadora básica con soporte de teclado
+    const exprEl = document.getElementById('expr');
+    const resEl = document.getElementById('res');
+    const buttons = Array.from(document.querySelectorAll('button[data-key]'));
+    const clearBtn = document.getElementById('clear');
+    const backBtn = document.getElementById('back');
+    const equalsBtn = document.getElementById('equals');
+
+    let expr = '';
+    let result = '0';
+
+    function updateScreen(){
+      exprEl.textContent = expr;
+      resEl.textContent = result;
+    }
+
+    function sanitizeExpression(s){
+      // Reemplaza signos visuales por operadores JS y evita caracteres indeseados
+      return s.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-');
+    }
+
+    function calculate(){
+      if(!expr) return;
+      try{
+        // Manejo de porcentaje: convierte 'x%' en '(x/100)'
+        let safe = sanitizeExpression(expr).replace(/(\d+(?:\.\d+)?)%/g, '($1/100)');
+        // Evitar ejecutar código no numérico: permitir sólo dígitos, operadores y paréntesis
+        if(!/^[0-9.+\-*/()%\s]+$/.test(safe)) throw new Error('Expresión no válida');
+        const val = Function(`return (${safe})`)(); // eval seguro limitado
+        if(!isFinite(val)) throw new Error('Resultado no definido');
+        result = String(Math.round((val + Number.EPSILON) * 1e12) / 1e12); // redondeo a 12 decimales
+      }catch(e){ result = 'Error' }
+      updateScreen();
+    }
+
+    // Pulsaciones en pantalla
+    buttons.forEach(b=> b.addEventListener('click', ()=>{
+      const k = b.getAttribute('data-key');
+      // evitar múltiples puntos en el mismo número
+      if(k === '.' ){
+        // buscar el último token numérico
+        const parts = expr.split(/[^0-9.]/);
+        const last = parts[parts.length-1];
+        if(last.includes('.')) return;
+      }
+      expr += k;
+      result = expr;
+      updateScreen();
+    }));
+
+    clearBtn.addEventListener('click', ()=>{ expr = ''; result = '0'; updateScreen(); });
+    backBtn.addEventListener('click', ()=>{ expr = expr.slice(0,-1); result = expr || '0'; updateScreen(); });
+    equalsBtn.addEventListener('click', calculate);
+
+    // Soporte de teclado
+    window.addEventListener('keydown', (ev)=>{
+      const key = ev.key;
+      if((/^[0-9]$/.test(key)) || ['+','-','*','/','.','%','(',')'].includes(key)){
+        ev.preventDefault();
+        expr += key;
+        result = expr; updateScreen();
+        return;
+      }
+      if(key === 'Enter') { ev.preventDefault(); calculate(); return; }
+      if(key === 'Backspace'){ ev.preventDefault(); expr = expr.slice(0,-1); result = expr || '0'; updateScreen(); return; }
+      if(key.toLowerCase() === 'c') { ev.preventDefault(); expr = ''; result = '0'; updateScreen(); return; }
+    });
+
+    // Inicializar
+    updateScreen();
+  </script>
+</body>
+</html>

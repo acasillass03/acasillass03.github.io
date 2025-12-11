@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="Alberto">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Formulario">
+    <meta name="Keywords" content="HTML, CSS, JavaScript">
+    <title>Registro</title>
+    
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #00aeff;
+        }
+        
+        .formulario {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.986);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .campo {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #000000;
+            font-weight: bold;
+        }
+        
+        .obligatorio {
+            color: rgb(255, 0, 0);
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #03a3ff;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        
+        .genero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .genero-opcion {
+            display: flex;
+            align-items: center;
+        }
+        
+        .genero-opcion input {
+            margin-right: 5px;
+        }
+        
+        .botones {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .limpiar {
+            background: #ddd;
+            color: #000000;
+        }
+        
+        .enviar {
+            background: #007bff;
+            color: white;
+        }
+        
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .linea {
+            height: 1px;
+            background: #eee;
+            margin: 20px 0;
+        }
+        
+        .oculto {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="formulario">
+        <h1>Formulario</h1>
+        <p style="text-align: center; margin-bottom: 20px; color: #666;">
+           <span class="obligatorio"></span>
+        </p>
+        
+        <form id="registro">
+            <div class="campo">
+                <label>Nombre <span class="obligatorio">*</span></label>
+                <input type="text" name="nombre" placeholder="Escribe tu nombre" required>
+                <div class="error" id="error-nombre">Campo obligatorio</div>
+            </div>
+            
+            <div class="campo">
+                <label>Apellidos <span class="obligatorio">*</span></label>
+                <input type="text" name="apellidos" placeholder="Escribe tus apellidos" required>
+                <div class="error" id="error-apellido">Campo obligatorio</div>
+            </div>
+            
+            <div class="campo">
+                <label>Correo electrónico <span class="obligatorio">*</span></label>
+                <input type="text" name="email" id="email" placeholder="correo@ejemplo.com" required>
+                <div class="error" id="error-email">Formato de correo no válido (ejemplo: nombre@dominio.com)</div>
+            </div>
+            
+            <div class="campo">
+                <label>Teléfono</label>
+                <input type="text" name="telefono" id="telefono" placeholder="Número de teléfono" maxlength="9">
+                <div class="error" id="error-telefono">Solo números (máx. 9 dígitos)</div>
+            </div>
+            
+            <div class="campo">
+                <label>Fecha de nacimiento</label>
+                <input type="date" name="fecha">
+            </div>
+            
+            <div class="campo">
+                <label>País <span class="obligatorio">*</span></label>
+                <select name="pais" id="pais" required>
+                    <option value="">Selecciona un país</option>
+                    <option value="Es">España</option>
+                    <option value="Al">Alemania</option>
+                    <option value="Ar">Argentina</option>
+                    <option value="Po">Portugal</option>
+                    <option value="Fr">Francia</option>
+                </select>
+            </div>
+
+            <div class="campo oculto" id="campo-comunidad">
+                <label>Comunidad Autónoma <span class="obligatorio">*</span></label>
+                <select name="comunidad" id="comunidad">
+                    <option value="">Selecciona una comunidad</option>
+                    <option value="Andalucia">Andalucía</option>
+                    <option value="Aragón">Aragón</option>
+                    <option value="Asturias">Asturias</option>
+                    <option value="Baleares">Islas Baleares</option>
+                    <option value="Canarias">Islas Canarias</option>
+                    <option value="Cantabria">Cantabria</option>
+                    <option value="Castilla la Mancha">Castilla la Mancha</option>
+                    <option value="Castilla y León">Castilla y León</option>
+                    <option value="Cataluña">Cataluña</option>
+                    <option value="Valencia">Comunidad Valenciana</option>
+                    <option value="Extremadura">Extremadura</option>
+                    <option value="Galicia">Galicia</option>
+                    <option value="Madrid">Comunidad de Madrid</option>
+                    <option value="Murcia">Murcia</option>
+                    <option value="Navarra">Navarra</option>
+                    <option value="Rioja">La Rioja</option>
+                    <option value="Vasco">País Vasco</option>
+                </select>
+            </div>
+
+            <div class="campo oculto" id="campo-provincia">
+                <label>Provincia <span class="obligatorio">*</span></label>
+                <select name="provincia" id="provincia">
+                    <option value="">Selecciona una provincia</option>
+                  
+                </select>
+            </div>
+
+            <div class="campo oculto" id="campo-pueblo">
+                <label>Pueblo <span class="obligatorio">*</span></label>
+                <select name="pueblo" id="pueblo">
+                    <option value="">Selecciona un pueblo</option>
+                    
+                </select>
+            </div>
+            
+            <div class="campo">
+                <label>Código Postal <span class="obligatorio">*</span></label>
+                <input type="text" name="codigo_postal" id="codigo_postal" placeholder="Escribe el Código Postal" required maxlength="5">
+                <div class="error" id="error-postal">Campo obligatorio (5 dígitos)</div>
+            </div>
+
+            <div class="linea"></div>
+            
+            <div class="campo">
+                <label>Género</label>
+                <div class="genero">
+                    <div class="genero-opcion">
+                        <input type="radio" name="genero" value="masculino" id="masc">
+                        <label for="masc">Masculino</label>
+                    </div>
+                    <div class="genero-opcion">
+                        <input type="radio" name="genero" value="femenino" id="fem">
+                        <label for="fem">Femenino</label>
+                    </div>
+                    <div class="genero-opcion">
+                        <input type="radio" name="genero" value="otro" id="otro">
+                        <label for="otro">Otro</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="botones">
+                <button type="reset" class="limpiar">Limpiar</button>
+                <button type="submit" class="enviar">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        
+        const provinciasPorComunidad = {
+            'Andalucia': [
+                'Almería', 'Cádiz', 'Córdoba', 'Granada', 'Huelva', 
+                'Jaén', 'Málaga', 'Sevilla'
+            ],
+            'Aragón': [
+                'Huesca', 'Teruel', 'Zaragoza'
+            ],
+            'Asturias': [
+                'Asturias'
+            ],
+            'Baleares': [
+                'Islas Baleares'
+            ],
+            'Canarias': [
+                'Las Palmas', 'Santa Cruz de Tenerife'
+            ],
+            'Cantabria': [
+                'Cantabria'
+            ],
+            'Castilla la Mancha': [
+                'Albacete', 'Ciudad Real', 'Cuenca', 'Guadalajara', 'Toledo'
+            ],
+            'Castilla y León': [
+                'Ávila', 'Burgos', 'León', 'Palencia', 'Salamanca',
+                'Segovia', 'Soria', 'Valladolid', 'Zamora'
+            ],
+            'Cataluña': [
+                'Barcelona', 'Girona', 'Lleida', 'Tarragona'
+            ],
+            'Valencia': [
+                'Alicante', 'Castellón', 'Valencia'
+            ],
+            'Extremadura': [
+                'Badajoz', 'Cáceres'
+            ],
+            'Galicia': [
+                'A Coruña', 'Lugo', 'Ourense', 'Pontevedra'
+            ],
+            'Madrid': [
+                'Madrid'
+            ],
+            'Murcia': [
+                'Murcia'
+            ],
+            'Navarra': [
+                'Navarra'
+            ],
+            'Rioja': [
+                'La Rioja'
+            ],
+            'Vasco': [
+                'Álava', 'Guipúzcoa', 'Vizcaya'
+            ]
+        };
+
+    
+        const pueblosPorProvincia = {
+            // Badajoz - TODOS LOS PUEBLOS Y CIUDADES
+            'Badajoz': [
+                'Acedera', 'Aceuchal', 'Ahillones', 'Alange', 'Alburquerque',
+                'Alconchel', 'Alconera', 'Aljucén', 'Almendral', 'Almendralejo',
+                'Arroyo de San Serván', 'Atalaya', 'Azuaga', 'Badajoz', 'Barcarrota',
+                'Baterno', 'Benquerencia de la Serena', 'Berlanga', 'Bienvenida',
+                'Bodonal de la Sierra', 'Burguillos del Cerro', 'Cabeza del Buey',
+                'Cabeza la Vaca', 'Calamonte', 'Calera de León', 'Calzadilla de los Barros',
+                'Campanario', 'Campillo de Llerena', 'Capilla', 'Carmonita', 'Carrascalejo',
+                'Casas de Don Pedro', 'Casas de Reina', 'Castilblanco', 'Castuera',
+                'Cheles', 'Cordobilla de Lácara', 'Corte de Peleas', 'Cristina',
+                'Don Álvaro', 'Don Benito', 'El Carrascalejo', 'Entrín Bajo', 'Esparragalejo',
+                'Esparragosa de la Serena', 'Esparragosa de Lares', 'Feria',
+                'Fregenal de la Sierra', 'Fuenlabrada de los Montes', 'Fuente de Cantos',
+                'Fuente del Arco', 'Fuente del Maestre', 'Fuentes de León',
+                'Garbayuela', 'Garlitos', 'Garrovilla', 'Granja de Torrehermosa',
+                'Guareña', 'Haba', 'Helechosa de los Montes', 'Herrera del Duque',
+                'Higuera de la Serena', 'Higuera de Llerena', 'Higuera de Vargas',
+                'Higuera la Real', 'Hinojosa del Valle', 'Hornachos', 'Jerez de los Caballeros',
+                'La Albuera', 'La Codosera', 'La Coronada', 'La Garrovilla',
+                'La Haba', 'La Lapa', 'La Morera', 'La Nava de Santiago',
+                'La Parra', 'La Roca de la Sierra', 'La Zarza', 'Llera',
+                'Llerena', 'Lobón', 'Magacela', 'Maguilla', 'Malcocinado',
+                'Malpartida de la Serena', 'Manchita', 'Medellín', 'Medina de las Torres',
+                'Mengabril', 'Mérida', 'Mirandilla', 'Monesterio', 'Montemolín',
+                'Monterrubio de la Serena', 'Montijo', 'Morera', 'Nava de Santiago',
+                'Navalvillar de Pela', 'Nogales', 'Oliva de la Frontera',
+                'Oliva de Mérida', 'Olivenza', 'Orellana de la Sierra',
+                'Orellana la Vieja', 'Palomas', 'Peñalsordo', 'Peraleda del Zaucejo',
+                'Puebla de Alcocer', 'Puebla de la Calzada', 'Puebla de la Reina',
+                'Puebla de Obando', 'Puebla de Sancho Pérez', 'Puebla del Maestre',
+                'Puebla del Prior', 'Pueblonuevo del Guadiana', 'Quintana de la Serena',
+                'Reina', 'Rena', 'Retamal de Llerena', 'Ribera del Fresno',
+                'Risco', 'Roca de la Sierra', 'Salvaleón', 'Salvatierra de los Barros',
+                'San Pedro de Mérida', 'San Vicente de Alcántara', 'Sancti-Spíritus',
+                'Santa Amalia', 'Santa Marta', 'Santos de Maimona', 'Segura de León',
+                'Siruela', 'Solana de los Barros', 'Talarrubias', 'Talavera la Real',
+                'Táliga', 'Tamurejo', 'Torre de Miguel Sesmero', 'Torremayor',
+                'Torremejía', 'Trasierra', 'Trujillanos', 'Usagre',
+                'Valdecaballeros', 'Valdelacalzada', 'Valdetorres', 'Valencia de las Torres',
+                'Valencia del Mombuey', 'Valencia del Ventoso', 'Valverde de Burguillos',
+                'Valverde de Leganés', 'Valverde de Llerena', 'Valverde de Mérida',
+                'Valle de la Serena', 'Valle de Matamoros', 'Valle de Santa Ana',
+                'Villafranca de los Barros', 'Villagarcía de la Torre',
+                'Villagonzalo', 'Villalba de los Barros', 'Villanueva de la Serena',
+                'Villanueva del Fresno', 'Villar de Rena', 'Villar del Rey',
+                'Villarta de los Montes', 'Zafra', 'Zahínos', 'Zalamea de la Serena',
+                'Zarza de Alange', 'Zarza-Capilla'
+            ],
+            
+            // Cáceres - TODOS LOS PUEBLOS Y CIUDADES
+            'Cáceres': [
+                'Abadía', 'Abertura', 'Acebo', 'Acehúche', 'Aceituna',
+                'Ahigal', 'Alagón del Río', 'Albalá', 'Alcántara', 'Alcollarín',
+                'Alcuéscar', 'Aldea del Cano', 'Aldeacentenera', 'Aldeanueva de la Vera',
+                'Aldeanueva del Camino', 'Aldehuela de Jerte', 'Alía', 'Aliseda',
+                'Almaraz', 'Almoharín', 'Arroyo de la Luz', 'Arroyomolinos de la Vera',
+                'Arroyomolinos', 'Baños de Montemayor', 'Barrado', 'Belvís de Monroy',
+                'Benquerencia', 'Berrocalejo', 'Berzocana', 'Bohonal de Ibor',
+                'Botija', 'Brozas', 'Cabañas del Castillo', 'Cabezabellosa',
+                'Cabezuela del Valle', 'Cabrero', 'Cáceres', 'Cachorrilla',
+                'Cadalso', 'Calzadilla', 'Caminomorisco', 'Campillo de Deleitosa',
+                'Campo Lugar', 'Cañamero', 'Cañaveral', 'Carbajo', 'Carcaboso',
+                'Carrascalejo', 'Casar de Cáceres', 'Casar de Palomero', 'Casares de las Hurdes',
+                'Casas de Don Antonio', 'Casas de Don Gómez', 'Casas del Castañar',
+                'Casas del Monte', 'Casas de Millán', 'Casas de Miravete',
+                'Casatejada', 'Casillas de Coria', 'Castañar de Ibor', 'Ceclavín',
+                'Cedillo', 'Cerezo', 'Cilleros', 'Collado de la Vera',
+                'Conquista de la Sierra', 'Coria', 'Cuacos de Yuste', 'Cumbre',
+                'Deleitosa', 'Descargamaría', 'Eljas', 'Escurial', 'Fresnedoso de Ibor',
+                'Galisteo', 'Garciaz', 'Garganta la Olla', 'Gargantilla',
+                'Gargüera', 'Garrovillas de Alconétar', 'Garvín', 'Gata',
+                'Gordo', 'Granja', 'Guadalupe', 'Guijo de Coria',
+                'Guijo de Galisteo', 'Guijo de Granadilla', 'Guijo de Santa Bárbara',
+                'Herguijuela', 'Hernán-Pérez', 'Herrera de Alcántara',
+                'Herreruela', 'Hervás', 'Higuera', 'Hinojal',
+                'Holguera', 'Hoyos', 'Huélaga', 'Ibahernando',
+                'Jaraicejo', 'Jaraíz de la Vera', 'Jarandilla de la Vera',
+                'Jarilla', 'Jerte', 'La Aldea del Obispo', 'La Cumbre',
+                'La Garganta', 'La Granja', 'La Pesga', 'Ladrillar',
+                'Logrosán', 'Losar de la Vera', 'Madrigal de la Vera',
+                'Madrigalejo', 'Madroñera', 'Majadas', 'Malpartida de Cáceres',
+                'Malpartida de Plasencia', 'Marchagaz', 'Mata de Alcántara',
+                'Membrío', 'Mesas de Ibor', 'Miajadas', 'Millanes',
+                'Mirabel', 'Mohedas de Granadilla', 'Monroy', 'Montánchez',
+                'Montehermoso', 'Moraleja', 'Morcillo', 'Navaconcejo',
+                'Navalmoral de la Mata', 'Navalvillar de Ibor', 'Navas del Madroño',
+                'Navezuelas', 'Nuñomoral', 'Oliva de Plasencia', 'Palomero',
+                'Pasarón de la Vera', 'Pedroso de Acim', 'Peraleda de la Mata',
+                'Peraleda de San Román', 'Perales del Puerto', 'Pescueza',
+                'Piedras Albas', 'Pinofranqueado', 'Piornal', 'Plasencia',
+                'Plasenzuela', 'Portaje', 'Portezuelo', 'Pozuelo de Zarzón',
+                'Puerto de Santa Cruz', 'Rebollar', 'Riolobos', 'Robledillo de Gata',
+                'Robledillo de la Vera', 'Robledillo de Trujillo', 'Robledollano',
+                'Romangordo', 'Rosalejo', 'Ruanes', 'Salorino', 'Salvatierra de Santiago',
+                'San Martín de Trevejo', 'Santa Ana', 'Santa Cruz de la Sierra',
+                'Santa Cruz de Paniagua', 'Santa Marta de Magasca', 'Santiago de Alcántara',
+                'Santiago del Campo', 'Santibáñez el Alto', 'Santibáñez el Bajo',
+                'Saucedilla', 'Segura de Toro', 'Serradilla', 'Serrejón',
+                'Sierra de Fuentes', 'Talaván', 'Talaveruela de la Vera',
+                'Talayuela', 'Tejeda de Tiétar', 'Tiétar', 'Toril',
+                'Tornavacas', 'Torno', 'Torre de Don Miguel', 'Torre de Santa María',
+                'Torrecilla de los Ángeles', 'Torrecillas de la Tiesa', 'Torrejón el Rubio',
+                'Torrejoncillo', 'Torremenga', 'Torremocha', 'Torreorgaz',
+                'Torrequemada', 'Trujillo', 'Valdastillas', 'Valdecañas de Tajo',
+                'Valdefuentes', 'Valdehúncar', 'Valdelacasa de Tajo', 'Valdemorales',
+                'Valdeobispo', 'Valencia de Alcántara', 'Valverde de la Vera',
+                'Valverde del Fresno', 'Vegaviana', 'Viandar de la Vera',
+                'Villa del Campo', 'Villa del Rey', 'Villamesías',
+                'Villamiel', 'Villanueva de la Sierra', 'Villanueva de la Vera',
+                'Villar de Plasencia', 'Villar del Pedroso', 'Villasbuenas de Gata',
+                'Zarza de Granadilla', 'Zarza de Montánchez', 'Zarza la Mayor',
+                'Zorita'
+            ],
+            
+            // Madrid 
+            'Madrid': [
+                'Madrid', 'Alcalá de Henares', 'Aranjuez', 'Arganda del Rey', 'Boadilla del Monte',
+                'Collado Villalba', 'Colmenar Viejo', 'El Escorial', 'Fuencarral-El Pardo', 'Fuenlabrada',
+                'Getafe', 'Leganés', 'Móstoles', 'Parla', 'Pinto', 'Pozuelo de Alarcón', 'Rivas-Vaciamadrid',
+                'San Fernando de Henares', 'San Sebastián de los Reyes', 'Torrejón de Ardoz', 'Valdemoro',
+                'Villaviciosa de Odón', 'Alcobendas', 'Las Rozas de Madrid', 'Majadahonda'
+            ],
+            
+            // Barcelona 
+            'Barcelona': [
+                'Barcelona', 'Badalona', 'Sabadell', 'Terrassa', 'Hospitalet de Llobregat',
+                'Santa Coloma de Gramenet', 'Mataró', 'Sant Cugat del Vallès', 'Cornellà de Llobregat',
+                'Sant Boi de Llobregat', 'Rubí', 'Manresa', 'Vilanova i la Geltrú', 'Castelldefels',
+                'Viladecans', 'El Prat de Llobregat', 'Granollers', 'Sitges', 'Cerdanyola del Vallès',
+                'Montcada i Reixac', 'Esplugues de Llobregat', 'Gavà', 'Sant Feliu de Llobregat'
+            ],
+            
+            // Valencia 
+            'Valencia': [
+                'Valencia', 'Torrent', 'Gandía', 'Paterna', 'Sagunto',
+                'Alzira', 'Burjassot', 'Mislata', 'Aldaia', 'Xàtiva',
+                'Catarroja', 'Alaquàs', 'Massamagrell', 'Manises', 'Quart de Poblet',
+                'Benetússer', 'Meliana', 'Silla', 'Aldaya', 'Puçol',
+                'Tavernes Blanques', 'Foios', 'Paiporta', 'Albal', 'Almussafes'
+            ],
+            
+            // Sevilla 
+            'Sevilla': [
+                'Sevilla', 'Dos Hermanas', 'Alcalá de Guadaíra', 'Utrera', 'Écija',
+                'Mairena del Aljarafe', 'Los Palacios y Villafranca', 'Coria del Río', 'La Rinconada',
+                'Camas', 'Lebrija', 'Osuna', 'Mairena del Alcor', 'Morón de la Frontera', 'Carmona',
+                'Bormujos', 'San Juan de Aznalfarache', 'Tomares', 'El Viso del Alcor', 'Lora del Río',
+                'Marchena', 'Estepa', 'Guillena', 'Aznalcázar', 'Castilleja de la Cuesta'
+            ],
+            
+            // Málaga 
+            'Málaga': [
+                'Málaga', 'Marbella', 'Vélez-Málaga', 'Fuengirola', 'Torremolinos',
+                'Estepona', 'Benalmádena', 'Antequera', 'Rincón de la Victoria', 'Alhaurín de la Torre',
+                'Mijas', 'Alhaurín el Grande', 'Ronda', 'Cártama', 'Nerja',
+                'Coín', 'Álora', 'Casarabonela', 'Pizarra', 'Campillos',
+                'Archidona', 'Teba', 'Almogía', 'Ardales', 'Casares'
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registro');
+            const nombre = form.nombre;
+            const apellidos = form.apellidos;
+            const email = document.getElementById('email');
+            const telefono = document.getElementById('telefono');
+            const codigoPostal = document.getElementById('codigo_postal');
+            const pais = document.getElementById('pais');
+            const campoComunidad = document.getElementById('campo-comunidad');
+            const comunidad = document.getElementById('comunidad');
+            const campoProvincia = document.getElementById('campo-provincia');
+            const provincia = document.getElementById('provincia');
+            const campoPueblo = document.getElementById('campo-pueblo');
+            const pueblo = document.getElementById('pueblo');
+            
+            // Mostrar/ocultar comunidades cuando cambia el país
+            pais.addEventListener('change', function() {
+                if (this.value === 'Es') {
+                    // Si selecciona España, mostrar comunidades
+                    campoComunidad.classList.remove('oculto');
+                    comunidad.required = true;
+                    // Ocultar provincias y pueblos
+                    campoProvincia.classList.add('oculto');
+                    provincia.value = '';
+                    provincia.required = false;
+                    campoPueblo.classList.add('oculto');
+                    pueblo.value = '';
+                    pueblo.required = false;
+                } else {
+                    // Si selecciona otro país, ocultar comunidades, provincias y pueblos
+                    campoComunidad.classList.add('oculto');
+                    comunidad.value = '';
+                    comunidad.required = false;
+                    campoProvincia.classList.add('oculto');
+                    provincia.value = '';
+                    provincia.required = false;
+                    campoPueblo.classList.add('oculto');
+                    pueblo.value = '';
+                    pueblo.required = false;
+                }
+            });
+            
+            // Mostrar provincias cuando cambia la comunidad
+            comunidad.addEventListener('change', function() {
+                const comunidadSeleccionada = this.value;
+                
+                if (comunidadSeleccionada && comunidadSeleccionada !== '') {
+                    // Mostrar campo de provincia
+                    campoProvincia.classList.remove('oculto');
+                    provincia.required = true;
+                    
+                    // Limpiar opciones anteriores
+                    provincia.innerHTML = '<option value="">Selecciona una provincia</option>';
+                    
+                    // Obtener provincias para la comunidad seleccionada
+                    const provincias = provinciasPorComunidad[comunidadSeleccionada];
+                    
+                    if (provincias) {
+                        // Añadir cada provincia como opción
+                        provincias.forEach(function(nombreProvincia) {
+                            const option = document.createElement('option');
+                            option.value = nombreProvincia;
+                            option.textContent = nombreProvincia;
+                            provincia.appendChild(option);
+                        });
+                    }
+                    
+                    // Ocultar pueblos
+                    campoPueblo.classList.add('oculto');
+                    pueblo.value = '';
+                    pueblo.required = false;
+                } else {
+                    // Si no hay comunidad seleccionada, ocultar provincias y pueblos
+                    campoProvincia.classList.add('oculto');
+                    provincia.value = '';
+                    provincia.required = false;
+                    campoPueblo.classList.add('oculto');
+                    pueblo.value = '';
+                    pueblo.required = false;
+                }
+            });
+            
+            // Mostrar pueblos cuando cambia la provincia
+            provincia.addEventListener('change', function() {
+                const provinciaSeleccionada = this.value;
+                
+                if (provinciaSeleccionada && provinciaSeleccionada !== '') {
+                    // Mostrar campo de pueblo
+                    campoPueblo.classList.remove('oculto');
+                    pueblo.required = true;
+                    
+                    // Limpiar opciones anteriores
+                    pueblo.innerHTML = '<option value="">Selecciona un pueblo</option>';
+                    
+                    // Obtener pueblos para la provincia seleccionada
+                    const pueblos = pueblosPorProvincia[provinciaSeleccionada];
+                    
+                    if (pueblos) {
+                        // Añadir cada pueblo como opción
+                        pueblos.forEach(function(nombrePueblo) {
+                            const option = document.createElement('option');
+                            option.value = nombrePueblo;
+                            option.textContent = nombrePueblo;
+                            pueblo.appendChild(option);
+                        });
+                    }
+                } else {
+                    // Si no hay provincia seleccionada, ocultar pueblos
+                    campoPueblo.classList.add('oculto');
+                    pueblo.value = '';
+                    pueblo.required = false;
+                }
+            });
+            
+            // Solo números en teléfono (al escribir)
+            telefono.addEventListener('input', function() {
+                // Quitar todo lo que no sea número
+                this.value = this.value.replace(/[^0-9]/g, '');
+                
+                // Validar longitud
+                if (this.value.length > 9) {
+                    this.value = this.value.substring(0, 9);
+                }
+                
+                // Mostrar error si hay letras
+                if (this.value.match(/[^0-9]/)) {
+                    document.getElementById('error-telefono').style.display = 'block';
+                } else {
+                    document.getElementById('error-telefono').style.display = 'none';
+                }
+            });
+            
+            // Solo números en código postal (al escribir)
+            codigoPostal.addEventListener('input', function() {
+                // Quitar todo lo que no sea número
+                this.value = this.value.replace(/[^0-9]/g, '');
+                
+                // Validar longitud
+                if (this.value.length > 5) {
+                    this.value = this.value.substring(0, 5);
+                }
+            });
+            
+            // Validar correo electrónico mientras se escribe
+            email.addEventListener('input', function() {
+                const valor = this.value;
+                const emailValido = validarEmail(valor);
+                
+                // Si el campo está vacío, no mostrar error
+                if (valor.trim() === '') {
+                    document.getElementById('error-email').style.display = 'none';
+                    return;
+                }
+                
+                // Mostrar error si el correo no es válido
+                if (!emailValido) {
+                    document.getElementById('error-email').style.display = 'block';
+                } else {
+                    document.getElementById('error-email').style.display = 'none';
+                }
+            });
+            
+            // Validar al salir del campo
+            nombre.addEventListener('blur', function() {
+                if (nombre.value.trim() === '') {
+                    document.getElementById('error-nombre').style.display = 'block';
+                } else {
+                    document.getElementById('error-nombre').style.display = 'none';
+                }
+            });
+            
+            apellidos.addEventListener('blur', function() {
+                if (apellidos.value.trim() === '') {
+                    document.getElementById('error-apellido').style.display = 'block';
+                } else {
+                    document.getElementById('error-apellido').style.display = 'none';
+                }
+            });
+            
+            email.addEventListener('blur', function() {
+                const valor = this.value;
+                const emailValido = validarEmail(valor);
+                
+                if (valor.trim() === '') {
+                    document.getElementById('error-email').textContent = 'Campo obligatorio';
+                    document.getElementById('error-email').style.display = 'block';
+                } else if (!emailValido) {
+                    document.getElementById('error-email').textContent = 'Formato de correo no válido (ejemplo: nombre@dominio.com)';
+                    document.getElementById('error-email').style.display = 'block';
+                } else {
+                    document.getElementById('error-email').style.display = 'none';
+                }
+            });
+            
+            codigoPostal.addEventListener('blur', function() {
+                if (codigoPostal.value.trim() === '') {
+                    document.getElementById('error-postal').textContent = 'Campo obligatorio';
+                    document.getElementById('error-postal').style.display = 'block';
+                } else if (codigoPostal.value.length !== 5) {
+                    document.getElementById('error-postal').textContent = 'Debe tener 5 dígitos';
+                    document.getElementById('error-postal').style.display = 'block';
+                } else {
+                    document.getElementById('error-postal').style.display = 'none';
+                }
+            });
+            
+            // Función para validar correo electrónico
+            function validarEmail(email) {
+                // Expresión regular para validar correo
+                const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                return regex.test(email);
+            }
+            
+            // Enviar formulario
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                let valido = true;
+                
+                if (nombre.value.trim() === '') {
+                    document.getElementById('error-nombre').style.display = 'block';
+                    valido = false;
+                }
+                
+                if (apellidos.value.trim() === '') {
+                    document.getElementById('error-apellido').style.display = 'block';
+                    valido = false;
+                }
+                
+                if (pais.value === '') {
+                    alert('Debe seleccionar un país');
+                    valido = false;
+                }
+                
+                const emailValido = validarEmail(email.value);
+                if (email.value.trim() === '') {
+                    document.getElementById('error-email').textContent = 'Campo obligatorio';
+                    document.getElementById('error-email').style.display = 'block';
+                    valido = false;
+                } else if (!emailValido) {
+                    document.getElementById('error-email').textContent = 'Formato de correo no válido (ejemplo: nombre@dominio.com)';
+                    document.getElementById('error-email').style.display = 'block';
+                    valido = false;
+                }
+                
+                if (codigoPostal.value.trim() === '') {
+                    document.getElementById('error-postal').textContent = 'Campo obligatorio';
+                    document.getElementById('error-postal').style.display = 'block';
+                    valido = false;
+                } else if (codigoPostal.value.length !== 5) {
+                    document.getElementById('error-postal').textContent = 'Debe tener 5 dígitos';
+                    document.getElementById('error-postal').style.display = 'block';
+                    valido = false;
+                }
+                
+                // Validar comunidad si se seleccionó España
+                if (pais.value === 'Es' && comunidad.value === '') {
+                    alert('Debe seleccionar una comunidad autónoma para España');
+                    valido = false;
+                }
+                
+                // Validar provincia si se seleccionó comunidad
+                if (pais.value === 'Es' && comunidad.value !== '' && provincia.value === '') {
+                    alert('Debe seleccionar una provincia');
+                    valido = false;
+                }
+                
+                // Validar pueblo si se seleccionó provincia
+                if (pais.value === 'Es' && provincia.value !== '' && pueblo.value === '') {
+                    alert('Debe seleccionar un pueblo');
+                    valido = false;
+                }
+                
+                // Validar teléfono si se ha puesto
+                if (telefono.value.trim() !== '') {
+                    const soloNumeros = /^[0-9]+$/.test(telefono.value);
+                    if (!soloNumeros || telefono.value.length > 9) {
+                        document.getElementById('error-telefono').style.display = 'block';
+                        valido = false;
+                    }
+                }
+                
+                if (valido) {
+                    alert('Formulario enviado correctamente');
+                    form.reset();
+                    // Ocultar comunidades, provincias y pueblos después de resetear
+                    campoComunidad.classList.add('oculto');
+                    campoProvincia.classList.add('oculto');
+                    campoPueblo.classList.add('oculto');
+                } else {
+                    alert('Por favor completa los campos requeridos correctamente');
+                }
+            });
+            
+            // Limpiar errores al resetear
+            form.addEventListener('reset', function() {
+                document.querySelectorAll('.error').forEach(function(error) {
+                    error.style.display = 'none';
+                });
+                // Ocultar comunidades, provincias y pueblos al limpiar
+                campoComunidad.classList.add('oculto');
+                campoProvincia.classList.add('oculto');
+                campoPueblo.classList.add('oculto');
+            });
+        });
+    
+    </script>
+    <button onclick="window.alert('Hola, buenos dias')";>Saludo</button>
+    <button onclick="document.write('Hola, buenos dias')";>Saludo</button>
+</body>
+</html>

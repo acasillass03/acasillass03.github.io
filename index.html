@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>IES Donoso Cortés</title>
+    <meta name="Author" content="Alberto">
+    <meta name="Description" content="Paguina web Donoso Cortes">
+    <meta name="Keywords" content="Instituto, Donoso Cortes">
+    <link rel="shortcut icon" href="imagen/favicon.jpg"  type="image/x-icon">
+    <meta property="og:title" content="Alberto">
+    <meta property="og:description" content="Ejercicio WEB">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.whatsapp.com/?lang=es"&gt;>
+    <meta property="og:image" content="img/descarga21.png"&gt;>
+    <meta property="og:site_name" content="WhatsApp">
+ 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #fff;
+        }
+
+        /* Cabecera */
+        .header {
+            background-color: #8e44ad;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            position: relative;
+            margin-bottom: 20px;
+            height: 60px;
+        }
+
+        .logo-ies {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: auto;
+        }
+
+        .titulo-centrado {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Cuadro de tareas */
+        .box {
+            background-color: #d4f1e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .box h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .box ul {
+            padding-left: 30px;
+            list-style-type: circle;
+        }
+
+        .box a {
+            color: #00aa55;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .box a:hover {
+            text-decoration: underline;
+        }
+
+        /* Fila con los dos cuadros */
+        .row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Cuadro azul: sin cambios */
+        .box-vertical {
+            width: 250px;
+            min-height: 400px;
+            background-color: #0066ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+        }
+
+        .box-vertical h2 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .box-vertical img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .box-vertical h4 {
+            margin: 10px 0;
+            font-size: 14px;
+            color: white;
+            text-align: left;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        /* Cuadro rojo: texto centrado */
+        .box-rojo {
+            width: 1000px;
+            min-height: 400px;
+            background-color: #ff4444;
+            padding: 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box-rojo .content {
+            max-width: 90%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .box-rojo h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .box-rojo details {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .box-rojo summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #0056b3;
+        }
+
+        .box-rojo p {
+            margin: 10px 0;
+            line-height: 1.5;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabecera -->
+    <div class="header">
+        <img src="./img/descarga.jpeg" alt="Logo IES Donoso Cortés" class="logo-ies">
+        <h1 class="titulo-centrado">IES Donoso Cortés</h1>
+    </div>
+
+    <!-- Tareas HTML -->
+    <div class="box">
+        <h2>Tareas HTML, CSS y JavaScript</h2>
+        <ul>
+            <li><a href="CALCULADORA.html">Calculadora</a></li>
+            <li><a href="div.html">Div 1</a></li>
+            <li><a href="div2.html">Div 2</a></li>
+            <li><a href="enlaces.html">Enlaces</a></li>
+            <li><a href="git.html">Git</a></li>
+            <li><a href="mapa_sensible.html">Mapa Sensible</a></li>
+            <li><a href="ancors.html">Ancors</a></li>
+            <li><a href="posiciones.html">Posiciones</a></li>
+            <li><a href="DHCP.html">DHCP</a></li>
+            <li><a href="usuario.html">Usuario</a></li>
+            <li><a href="mi-primera-web.html">Primera Web</a></li>
+            <li><a href="ejemplo.html">Diferentes IAs</a></li>
+            <li><a href="Etiquetasdetexto.html">Etiquetas de texto</a></li>
+            <li><a href="formulario.html">Formulario</a></li>
+            <li><a href="ia.html">IA</a></li>
+            <li><a href="/JavaScript/index.html">JavaScript</a></li>
+           
+            
+        </ul>
+    </div>
+
+    <!-- Fila: cuadro azul + cuadro rojo con texto centrado -->
+    <div class="row">
+        <!-- Cuadro azul -->
+        <div class="box-vertical">
+            <h2>Junta de Extremadura</h2>
+            <img src="img/descarga (1).png" alt="Junta de Extremadura">
+            <h4>Contacta con el centro: 924 02 18 24</h4>
+            <h4>Contacta con la Junta de Extremadura:900 222 012</h4>
+        </div>
+
+        <!-- Cuadro rojo: texto centrado -->
+        <div class="box-rojo">
+            <div class="content">
+                <h3>¿Qué es DHCP?</h3>
+
+   
+                <details>
+                    <summary>Definición de DHCP</summary>
+                    <p>DHCP (Dynamic Host Configuration Protocol) es un protocolo de red que permite asignar automáticamente direcciones IP y otros parámetros de configuración (como puerta de enlace, máscara de subred o DNS) a los dispositivos que se conectan a una red.</p>
+                </details>
+                
+                <details>
+                    <summary>Cómo funciona DHCP</summary>
+                    <p>El DHCP funciona mediante un proceso de cuatro pasos principales, conocido como el ciclo DORA (por sus siglas en inglés):</p>
+                    <p><strong>Discover (Descubrir):</strong> El cliente (por ejemplo, tu PC) que se conecta a la red no tiene dirección IP. Envía un mensaje DHCP Discover para buscar un servidor DHCP disponible.</p>
+                    <p><strong>Offer (Oferta):</strong> El servidor DHCP recibe la solicitud y responde con un DHCP Offer, ofreciendo una dirección IP disponible junto con otros datos (máscara, puerta de enlace, DNS, etc.).</p>
+                    <p><strong>Request (Solicitud):</strong> El cliente responde con un DHCP Request, indicando que acepta la dirección ofrecida por ese servidor.</p>
+                    <p><strong>Acknowledge (Confirmación):</strong> Finalmente, el servidor envía un DHCP Acknowledge (ACK) confirmando la asignación. El cliente ya puede usar esa dirección IP durante un tiempo determinado (llamado lease o concesión).</p>
+                </details>
+            </div>
+        </div>
+    </div>
+    <button type="button" onclick="document.getElementById('demo').innerHTML = Date()">
+    Haz clic aqui para ver la hora</button>
+    <p id="demo"></p>       
+</body>
+</html>
